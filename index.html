@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hook Content Solution</title>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Navbar Styling */
+        nav {
+            background-color: #002F6C;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .nav-left ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav .nav-left ul li {
+            margin: 0 20px;
+        }
+
+        nav .nav-left ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav .nav-left ul li a:hover {
+            color: #ff6347;
+        }
+
+        nav .nav-right {
+            color: #fff;
+            font-size: 14px;
+            text-align: right;
+        }
+
+        nav .nav-right p {
+            margin: 0;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #002F6C;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        header img {
+            width: 200px;
+            border-radius: 50%;
+            transition: transform 0.5s;
+        }
+
+        header img:hover {
+            transform: rotate(360deg); /* Logo rotation effect */
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 40px;
+            margin-top: 20px;
+            font-weight: 700;
+        }
+
+        header p {
+            color: #ddd;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        /* Home Section Styling */
+        .home {
+            text-align: center;
+            padding: 80px 0;
+            background-color: #ff6347;
+            color: white;
+        }
+        .home h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        .home p {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        .home .cta-btn {
+            font-size: 20px;
+            padding: 14px 35px;
+            background-color: #002F6C;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .home .cta-btn:hover {
+            background-color: #333;
+        }
+
+        /* About Section */
+        .about {
+            background-color: #333;
+            padding: 80px 20px;
+            text-align: center;
+            color: #fff;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .about:hover {
+            background-color: #ff6347;
+        }
+
+        .about h2 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .about p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .about ul {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .about li {
+            background-color: rgba(255, 182, 193, 0.8); /* Pink color */
+            margin: 10px;
+            padding: 15px 30px;
+            width: 220px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .about li:hover {
+            background-color: #1E90FF; /* Blue color */
+            color: #fff;
+            transform: translateY(-12px);
+        }
+
+        /* Services Section Styling */
+        .services {
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .services ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .services li {
+            background-color: #fff;
+            margin: 15px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            color: #ff1493; /* Pink color */
+        }
+
+        .services li:hover {
+            background-color: #1E90FF; /* Blue color */
+            color: #fff;
+            transform: translateY(-12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Portfolio Section Styling */
+        .portfolio {
+            background: url('https://imgur.com/Yh5yaTR.jpg') no-repeat center center/cover;
+            padding: 80px 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .portfolio h2 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 50px;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* Team Section Styling */
+        .team-member {
+            text-align: center;
+            margin: 25px;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Round shape */
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .team-member p {
+            font-weight: bold;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .team-member span {
+            font-size: 16px;
+            color: #888;
+        }
+
+        /* Contact Section Styling */
+        .contact {
+            background-color: #f9f9f9;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Buttons styling */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .whatsapp-btn, .facebook-btn {
+            font-size: 20px;
+            color: white;
+            padding: 14px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .whatsapp-btn {
+            background-color: #25D366;
+        }
+        .facebook-btn {
+            background-color: #1877F2;
+        }
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+        .facebook-btn:hover {
+            background-color: #3b5998;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            background-color: #002F6C;
+            color: white;
+            padding: 25px;
+            font-size: 16px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header img {
+                width: 160px;
+            }
+
+            .swiper-container {
+                height: 300px;
+            }
+
+            .button-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .team-member {
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            .home h2 {
+                font-size: 40px;
+            }
+
+            .home p {
+                font-size: 20px;
+            }
+
+            .about h2 {
+                font-size: 40px;
+            }
+
+            .about p {
+                font-size: 20px;
+            }
+
+            .about ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-left">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li> <!-- New Contact Link -->
+                <li><a href="#team">Team</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <p>Baunia, Turag, Dhaka-1230<br>Mobile: +8801911110476<br>WhatsApp: 01647431836</p>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <h2>Welcome to Hook</h2>
+        <p>We specialize in digital marketing and web development solutions that help businesses grow. Break down barriers and take your business to the next level with us!</p>
+        <a href="#services" class="cta-btn">Explore Our Services</a>
+    </section>
+
+    <header>
+        <img src="https://imgur.com/iwAU8oW.jpg" alt="Hook Content Solution Logo" id="logo">
+        <h1>Welcome to Hook</h1>
+        <p>Break Down Barrier</p>
+    </header>
+
+    <div class="main-content">
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <h2>About Hook Content Solution</h2>
+            <p>We are a digital marketing and web development agency focused on providing top-notch services to help businesses thrive in the digital world. Our goal is to break down barriers and drive success for our clients with creative strategies and cutting-edge technology.</p>
+            <p>We offer the following services:</p>
+            <ul>
+                <li>Sales Funnel</li>
+                <li>Meta Marketing</li>
+                <li>Website Design</li>
+                <li>Website Development</li>
+                <li>Graphics Design</li>
+                <li>Video Content</li>
+                <li>Ads Account</li>
+            </ul>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Sales Funnel</li>
+                <li>Meta Marketing</li>
+                <li>Website Design</li>
+                <li>Website Development</li>
+                <li>Graphics Design</li>
+                <li>Video Content</li>
+                <li>Ads Account</li>
+            </ul>
+        </section>
+
+        <!-- Who Are We Section -->
+        <section class="who-are-we" id="who-are-we">
+            <h2>Who Are We?</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="https://imgur.com/KELuk6u.jpg" alt="Who Are We Image 1"></div>
+                    <div class="swiper-slide"><img src="https://imgur.com/cCkVKh9.jpg" alt="Who Are We Image 2"></div>
+                    <div class="swiper-slide"><img src="https://imgur.com/yin1S6M.jpg" alt="Who Are We Image 3"></div>
+                    <div class="swiper-slide"><img src="https://imgur.com/nMdpFxZ.jpg" alt="Who Are We Image 4"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section with Swiper -->
+        <section class="portfolio" id="portfolio">
+            <h2>Our Portfolio</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="https://imgur.com/Yh5yaTR.jpg" alt="Portfolio Image 1"></div>
+                    <div class="swiper-slide"><img src="https://imgur.com/GfNCt9o.jpg" alt="Portfolio Image 2"></div>
+                    <div class="swiper-slide"><img src="https://imgur.com/5rVlNoj.jpg" alt="Portfolio Image 3"></div>
+                    <div class="swiper-slide"><img src="https://imgur.com/aWNlvPX.jpg" alt="Portfolio Image 4"></div>
+                    <div class="swiper-slide"><img src="https://imgur.com/Kt5cq3m.jpg" alt="Portfolio Image 5"></div>
+                    <div class="swiper-slide"><img src="https://imgur.com/ssLMO5W.jpg" alt="Portfolio Image 6"></div>
+                    <div class="swiper-slide"><img src="https://imgur.com/EE9PPpI.jpg" alt="Portfolio Image 7"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team" id="team">
+            <h2>Meet Our Team</h2>
+            <div class="team-member">
+                <img src="https://imgur.com/aATFNDw.jpg" alt="Solyman Hossain">
+                <p>Solyman Hossain</p>
+                <span>Sales Panel & Meta Ads Specialist</span>
+            </div>
+            <div class="team-member">
+                <img src="https://imgur.com/NOs5my5.jpg" alt="Najmun Nahar Hira">
+                <p>Najmun Nahar Hira</p>
+                <span>Software Engineer</span>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <h2>Contact Us</h2>
+            <p>Address: Baunia, Turag, Dhaka-1230</p>
+            <p>Mobile: +8801915009386</p>
+            <p>WhatsApp: 01647431836</p>
+        </section>
+
+        <!-- WhatsApp and Facebook Buttons -->
+        <div class="button-container">
+            <a href="https://api.whatsapp.com/send?phone=+8801915009386" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Contact on WhatsApp
+            </a>
+            <a href="https://www.facebook.com/share/1C3Coxnx2W/" class="facebook-btn" target="_blank">
+                <i class="fab fa-facebook"></i> Share on Facebook
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Developed by <strong>Hook</strong></p>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        // Initialize Swiper for Portfolio
+        var swiperPortfolio = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            spaceBetween: 30,
+            slidesPerView: 1,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+</body>
+</html>
