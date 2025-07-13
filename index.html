@@ -190,13 +190,13 @@
 
         .swiper-container {
             width: 100%;
-            height: 400px;
+            height: 100%;
             margin-bottom: 50px;
         }
 
         .swiper-slide img {
             width: 100%;
-            height: 100%;
+            height: auto; /* Ensure the image is fully visible */
             object-fit: cover;
             border-radius: 12px;
         }
@@ -388,6 +388,14 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .who-are-we h2 {
+                font-size: 40px;
+            }
+
+            .who-are-we .swiper-container {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -399,11 +407,8 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#who-are-we">Who Are We</a></li>
                 <li><a href="#team">Team</a></li>
-                <li><a href="#contact">Contact</a></li> <!-- Added Contact link -->
+                <li><a href="#contact">Contact</a></li> <!-- Removed About, Portfolio, and Who Are We links -->
             </ul>
         </div>
         <div class="nav-right">
@@ -469,7 +474,7 @@
             </ul>
         </section>
 
-        <!-- Portfolio Section with Swiper -->
+        <!-- Portfolio Section -->
         <section class="portfolio" id="portfolio">
             <h2>Our Portfolio</h2>
             <div class="swiper-container">
