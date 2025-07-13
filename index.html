@@ -17,13 +17,14 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa; /* Light background color */
             color: #333;
+            overflow-x: hidden;
         }
 
         /* Navbar Styling */
         nav {
-            background-color: #002F6C;
+            background-color: #FF6F61; /* Eye-catching coral color */
             padding: 15px 0;
             position: sticky;
             top: 0;
@@ -32,6 +33,7 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            transition: all 0.3s ease;
         }
 
         nav .nav-left ul {
@@ -48,7 +50,7 @@
 
         nav .nav-left ul li a {
             text-decoration: none;
-            color: #fff;
+            color: white;
             font-size: 18px;
             font-weight: 600;
             text-transform: uppercase;
@@ -56,23 +58,16 @@
         }
 
         nav .nav-left ul li a:hover {
-            color: #ff6347;
-        }
-
-        nav .nav-right {
-            color: #fff;
-            font-size: 14px;
-            text-align: right;
-            display: none;
+            color: #FFC107; /* Hover color - yellow */
         }
 
         /* Header Styling */
         header {
-            background-color: #002F6C;
+            background-color: #007BFF; /* Bright blue */
             padding: 40px 0;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
         header img {
@@ -93,7 +88,7 @@
         }
 
         header p {
-            color: #ddd;
+            color: #fff;
             font-size: 22px;
             margin-bottom: 20px;
         }
@@ -102,8 +97,9 @@
         .home {
             text-align: center;
             padding: 80px 20px;
-            background-color: #ff6347;
+            background-color: #FF6347; /* Tomato color */
             color: white;
+            animation: slideUp 1.5s ease-out;
         }
         .home h2 {
             font-size: 50px;
@@ -116,23 +112,25 @@
         .home .cta-btn {
             font-size: 20px;
             padding: 14px 35px;
-            background-color: #002F6C;
+            background-color: #FF6F61; /* Matching navbar color */
             color: white;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
         }
         .home .cta-btn:hover {
-            background-color: #333;
+            background-color: #FFC107; /* Hover color - yellow */
+            animation: pulse 1s infinite;
         }
 
-        /* About Section */
+        /* About Section Styling */
         .about {
-            background-color: #002F6C;
+            background-color: #FF6347; /* Tomato color */
             padding: 80px 20px;
             text-align: center;
-            color: #fff;
+            color: white;
             transition: background-color 0.3s ease-in-out;
+            animation: fadeInUp 1s ease-out;
         }
 
         .about h2 {
@@ -142,43 +140,27 @@
             text-transform: uppercase;
         }
 
-        .about p {
-            font-size: 22px;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
         .about ul {
             padding: 0;
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            list-style-type: disc;
+            list-style-position: inside;
+            text-align: left;
+            margin: 0 auto;
+            width: 60%;
         }
 
         .about li {
-            background-color: rgba(255, 182, 193, 0.8); /* Pink color */
-            margin: 10px;
-            padding: 15px 30px;
-            width: 220px;
-            text-align: center;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .about li:hover {
-            background-color: #1E90FF; /* Blue color */
-            color: #fff;
-            transform: translateY(-12px);
+            font-size: 18px;
+            margin-bottom: 15px;
         }
 
         /* Who Are We Section */
         .who-are-we {
-            background-color: #002F6C;
+            background-color: #007BFF; /* Bright blue */
             padding: 80px 20px;
             text-align: center;
             color: #fff;
+            animation: fadeIn 1.5s ease-out;
         }
 
         .who-are-we h2 {
@@ -196,44 +178,73 @@
 
         .swiper-slide img {
             width: 100%;
-            height: auto; /* Ensure the image is fully visible */
+            height: auto;
             object-fit: cover;
             border-radius: 12px;
+            animation: zoomIn 2s ease-out;
         }
 
         /* Services Section Styling */
         .services {
             padding: 40px 20px;
-            background-color: #002F6C;
-            color: white;
+            background-color: #f9f9f9;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
         }
 
-        .services ul {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .services h2 {
+            font-size: 48px;
+            margin-bottom: 40px;
+            color: #007BFF;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .services .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
             padding: 0;
             list-style: none;
-            transition: all 0.3s ease;
         }
 
-        .services li {
-            background-color: #fff;
-            margin: 15px;
+        .services .service-item {
+            background-color: #FFF;
             padding: 20px;
-            width: 300px;
-            text-align: center;
             border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            color: #ff1493; /* Pink color */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+            color: #333;
         }
 
-        .services li:hover {
-            background-color: #1E90FF; /* Blue color */
-            color: #fff;
-            transform: translateY(-12px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        .services .service-item i {
+            font-size: 40px;
+            color: #FF6347;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .services .service-item h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #007BFF;
+        }
+
+        .services .service-item p {
+            font-size: 16px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .services .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .services .service-item:hover i {
+            color: #007BFF;
         }
 
         /* Portfolio Section Styling */
@@ -242,6 +253,7 @@
             padding: 80px 20px;
             color: #fff;
             text-align: center;
+            animation: fadeInUp 1s ease-out;
         }
 
         .portfolio h2 {
@@ -255,12 +267,13 @@
         .team-member {
             text-align: center;
             margin: 25px;
+            animation: fadeInUp 1s ease-out;
         }
 
         .team-member img {
             width: 150px;
             height: 150px;
-            border-radius: 50%; /* Round shape */
+            border-radius: 50%;
             object-fit: cover;
             border: 4px solid #fff;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
@@ -280,10 +293,11 @@
 
         /* Contact Section Styling */
         .contact {
-            background-color: #002F6C;
+            background-color: #FF6F61;
             padding: 50px 20px;
             text-align: center;
             color: white;
+            animation: fadeIn 1.5s ease-out;
         }
 
         .contact h2 {
@@ -304,7 +318,8 @@
             margin-top: 20px;
             flex-wrap: wrap;
         }
-        .whatsapp-btn, .facebook-btn {
+
+        .whatsapp-btn, .facebook-btn, .call-btn {
             font-size: 20px;
             color: white;
             padding: 14px 25px;
@@ -315,23 +330,35 @@
             align-items: center;
             justify-content: center;
         }
+
         .whatsapp-btn {
             background-color: #25D366;
         }
+
         .facebook-btn {
             background-color: #1877F2;
         }
+
+        .call-btn {
+            background-color: #34b7f1;
+        }
+
         .whatsapp-btn:hover {
             background-color: #128C7E;
         }
+
         .facebook-btn:hover {
             background-color: #3b5998;
+        }
+
+        .call-btn:hover {
+            background-color: #0084ff;
         }
 
         /* Footer styling */
         footer {
             text-align: center;
-            background-color: #002F6C;
+            background-color: #FF6F61;
             color: white;
             padding: 25px;
             font-size: 16px;
@@ -339,28 +366,8 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            header img {
-                width: 160px;
-            }
-
-            .swiper-container {
-                height: 300px;
-            }
-
-            nav .nav-right {
-                display: block;
-                text-align: center;
-                margin-top: 15px;
-            }
-
-            .button-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .team-member {
-                text-align: center;
-                margin: 20px 0;
+            .services .service-list {
+                grid-template-columns: 1fr 1fr;
             }
 
             .home h2 {
@@ -397,6 +404,63 @@
                 height: 250px;
             }
         }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -410,9 +474,6 @@
                 <li><a href="#team">Team</a></li>
                 <li><a href="#contact">Contact</a></li> <!-- Removed About, Portfolio, and Who Are We links -->
             </ul>
-        </div>
-        <div class="nav-right">
-            <p>Baunia, Turag, Dhaka-1230<br>Mobile: +8801911110476<br>WhatsApp: +8801911110476</p>
         </div>
     </nav>
 
@@ -434,16 +495,11 @@
         <!-- About Section -->
         <section class="about" id="about">
             <h2>About Hook Content Solution</h2>
-            <p>We are a digital marketing and web development agency focused on providing top-notch services to help businesses thrive in the digital world. Our goal is to break down barriers and drive success for our clients with creative strategies and cutting-edge technology.</p>
-            <p>We offer the following services:</p>
             <ul>
-                <li>Sales Funnel</li>
-                <li>Meta Marketing</li>
-                <li>Website Design</li>
-                <li>Website Development</li>
-                <li>Graphics Design</li>
-                <li>Video Content</li>
-                <li>Ads Account</li>
+                <li>We are a digital marketing and web development agency.</li>
+                <li>Our goal is to break down barriers and drive success for our clients.</li>
+                <li>We offer services such as sales funnels, Meta marketing, website design and development, graphics, video content, and more.</li>
+                <li>We focus on creative strategies and cutting-edge technology to help your business thrive.</li>
             </ul>
         </section>
 
@@ -463,14 +519,42 @@
         <!-- Services Section -->
         <section class="services" id="services">
             <h2>Our Services</h2>
-            <ul>
-                <li>Sales Funnel</li>
-                <li>Meta Marketing</li>
-                <li>Website Design</li>
-                <li>Website Development</li>
-                <li>Graphics Design</li>
-                <li>Video Content</li>
-                <li>Ads Account</li>
+            <ul class="service-list">
+                <li class="service-item">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Sales Funnel</h3>
+                    <p>We create highly optimized sales funnels to help you generate and convert leads effectively.</p>
+                </li>
+                <li class="service-item">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Meta Marketing</h3>
+                    <p>Optimize your presence on Meta platforms (Facebook, Instagram) with our proven marketing strategies.</p>
+                </li>
+                <li class="service-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Website Design</h3>
+                    <p>Get a beautifully designed, responsive website that converts visitors into loyal customers.</p>
+                </li>
+                <li class="service-item">
+                    <i class="fas fa-code"></i>
+                    <h3>Website Development</h3>
+                    <p>We develop robust and scalable websites tailored to your business needs and goals.</p>
+                </li>
+                <li class="service-item">
+                    <i class="fas fa-palette"></i>
+                    <h3>Graphics Design</h3>
+                    <p>Create stunning visual content to represent your brand with professional graphic design.</p>
+                </li>
+                <li class="service-item">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Content</h3>
+                    <p>Engage your audience with creative and high-quality video content that tells your story.</p>
+                </li>
+                <li class="service-item">
+                    <i class="fas fa-ad"></i>
+                    <h3>Ads Account</h3>
+                    <p>We manage your ads accounts to help you reach the right audience and get the best results.</p>
+                </li>
             </ul>
         </section>
 
@@ -513,9 +597,12 @@
             <p>WhatsApp: <a href="https://api.whatsapp.com/send?phone=+8801911110476">+8801911110476</a></p>
         </section>
 
-        <!-- WhatsApp and Facebook Buttons -->
+        <!-- WhatsApp, Call, and Facebook Buttons -->
         <div class="button-container">
-            <a href="https://api.whatsapp.com/send?phone=++8801911110476" class="whatsapp-btn" target="_blank">
+            <a href="tel:+8801911110476" class="call-btn" target="_blank">
+                <i class="fas fa-phone-alt"></i> Call Now
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=+8801911110476" class="whatsapp-btn" target="_blank">
                 <i class="fab fa-whatsapp"></i> Contact on WhatsApp
             </a>
             <a href="https://www.facebook.com/share/1C3Coxnx2W/" class="facebook-btn" target="_blank">
